@@ -8,7 +8,7 @@ End-to-end SOC detection lab using **Windows Event Logs (4688)**, **Sysmon**, an
 
 ![SOC Architecture](architecture/soc-architecture.png)
 
-**Description**  
+**Description**
 
 
 This diagram shows the end-to-end SOC detection pipeline used in this lab.  
