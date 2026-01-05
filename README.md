@@ -149,6 +149,89 @@ Detected activity mapped to MITRE ATT&CK techniques, including:
 - **T1218.011 – Rundll32**
 - **T1218.010 – Regsvr32**
 
+🛡️ MITRE ATT&CK Technique Mapping (Explanation)
+
+🔹 T1059.001 – PowerShell
+
+What it is
+Abuse of PowerShell, a powerful Windows scripting engine commonly used by attackers for execution, reconnaissance, and post-exploitation.
+
+Why attackers use it
+
+Installed by default on Windows
+
+Highly flexible and powerful
+
+Can execute scripts, commands, and in-memory payloads
+
+Often trusted by security controls
+
+How it appears in this lab
+
+Event ID 4688 process creation events
+
+powershell.exe observed as NewProcessName
+
+Suspicious or interactive command-line usage
+
+Parent processes such as explorer.exe or other system binaries
+
+🔹 T1218.011 – Rundll32
+
+What it is
+Abuse of rundll32.exe, a legitimate Windows binary used to execute code within DLL files.
+
+Why attackers use it
+
+Signed Microsoft binary (trusted)
+
+Executes arbitrary DLL functions
+
+Frequently abused to evade application whitelisting
+
+How it appears in this lab
+
+rundll32.exe launched with unusual DLLs
+
+Suspicious command-line arguments
+
+Parent processes such as cmd.exe or unexpected system binaries
+
+🔹 T1218.010 – Regsvr32
+
+What it is
+Abuse of regsvr32.exe, normally used to register or unregister DLLs.
+
+Why attackers use it
+
+Trusted Microsoft binary
+
+Can execute code via DLL registration
+
+Historically abused for fileless execution
+
+How it appears in this lab
+
+regsvr32.exe executing DLLs outside standard install paths
+
+Silent execution flags (e.g. /s)
+
+Abnormal parent–child process relationships
+
+🛡️ Why This Matters
+
+Mapping detections to MITRE ATT&CK allows SOC analysts to:
+
+Understand attacker behavior, not just raw logs
+
+Standardize detections across environments
+
+Prioritize alerts based on known adversary techniques
+
+Communicate findings clearly during investigations
+
+This lab demonstrates how raw Windows telemetry can be transformed into threat-informed, MITRE-aligned detections.
+
 ---
 
 ## 🛡️ Detection Logic
