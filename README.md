@@ -100,7 +100,10 @@ Displays enriched process telemetry including image paths and command lines.
 ---
 
 ### 6️⃣ Command-Line Fields Extracted  
-**Screenshot:** `06-commandline-fields-extracted.png`  
+**Screenshot:**
+
+![Alt text](screenshots/06-commandline-fields-extracted.png)  
+
 Extracted fields include:
 - `NewProcessName`
 - `CommandLine`
