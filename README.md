@@ -91,7 +91,10 @@ Shows raw Windows process creation events successfully indexed.
 ---
 
 ### 5️⃣ Sysmon Process Creation Events  
-**Screenshot:** `05-sysmon-process-create.png`  
+**Screenshot:** 
+
+![Alt text](screenshots/05-sysmon-process-create.png)  
+
 Displays enriched process telemetry including image paths and command lines.
 
 ---
