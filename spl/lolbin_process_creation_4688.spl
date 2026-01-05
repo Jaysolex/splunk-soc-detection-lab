@@ -1,1 +1,25 @@
-
+index=main sourcetype=XmlWinEventLog:Security
+| search "<EventID>4688</EventID>"
+| rex "<Data Name='NewProcessName'>(?<NewProcessName>[^<]+)"
+| rex "<Data Name='CommandLine'>(?<CommandLine>[^<]+)"
+| rex "<Data Name='ParentProcessName'>(?<ParentProcessName>[^<]+)"
+| eval proc=lower(NewProcessName)
+| eval technique_id=case(
+    like(proc,"%\\powershell.exe"), "T1059.001",
+    like(proc,"%\\rundll32.exe"),   "T1218.011",
+    like(proc,"%\\regsvr32.exe"),   "T1218.010",
+    like(proc,"%\\mshta.exe"),      "T1218.005",
+    like(proc,"%\\certutil.exe"),   "T1140",
+    1=1, "N/A"
+  )
+| eval technique_name=case(
+    technique_id="T1059.001","PowerShell",
+    technique_id="T1218.011","Rundll32",
+    technique_id="T1218.010","Regsvr32",
+    technique_id="T1218.005","Mshta",
+    technique_id="T1140","Deobfuscate/Decode Files or Information",
+    1=1,"Other"
+  )
+| where technique_id!="N/A"
+| table _time host NewProcessName CommandLine ParentProcessName technique_id technique_name
+| sort - _time
