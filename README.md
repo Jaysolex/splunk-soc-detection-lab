@@ -82,7 +82,10 @@ Validates log forwarding from the Windows endpoint to Splunk.
 ---
 
 ### 4️⃣ Event ID 4688 Ingested  
-**Screenshot:** `04-event-4688-ingested.png`  
+**Screenshot:**
+
+![Alt text](screenshots/04-event-4688-ingested.png)  
+
 Shows raw Windows process creation events successfully indexed.
 
 ---
